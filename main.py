@@ -36,22 +36,30 @@ def get_similarities(song_name, data):
 
 def recommend_songs(song_name, data=tracks):
     # Base case
+    song_list = []
+
     if tracks[tracks['name'] == song_name].shape[0] == 0:
-        print('This song is either not so popular or you\
-        have entered invalid_name.\n Some songs you may like:\n')
+        comment = 'This song is either not so popular or you/have entered a song out of our list.\nSome songs you may like:\n'
         
         for song in data.sample(n=5)['name'].values:
-            print(song)
-        return
+            song_list.append(song)
 
-    data['similarity_factor'] = get_similarities(song_name, data)
+    else:
+        comment = 'Ahh! You have some great taste. Some songs you may like:\n'
 
-    data.sort_values(by=['similarity_factor', 'popularity'],
-                    ascending = [False, False],
-                    inplace=True)
+        data['similarity_factor'] = get_similarities(song_name, data)
 
-    # First song will be the input song itself as the similarity will be highest.
-    return data[['name', 'artists']][2:7]
+        data.sort_values(by=['similarity_factor', 'popularity'],
+                        ascending = [False, False],
+                        inplace=True)
 
-song_name = input("Enter a song of your liking: ")
-print(recommend_songs(song_name,tracks))
+        # First song will be the input song itself as the similarity will be highest.
+        data = data[['name', 'artists']][2:7]
+
+        data_list = data.values.tolist()
+
+        for i in data_list:
+            song_list.append(f'{i[0]} by {i[1]}')
+    
+    return(comment, song_list)
+
