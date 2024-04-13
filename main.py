@@ -59,7 +59,7 @@ def recommend_songs(song_name, data=tracks):
         data_list = data.values.tolist()
 
         for i in data_list:
-            song_list.append(f'{i[0]} by {i[1]}')
+            song_list.append(f'Song: {i[0]}, Artist:{i[1]}')
     
     return(comment, song_list)
 
