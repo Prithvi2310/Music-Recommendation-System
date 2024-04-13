@@ -1,12 +1,12 @@
 import pandas as pd
 
-tracks = pd.read_csv('data/data.csv')
+tracks = pd.read_csv('data/data_new.csv')
 
 def data_cleaning(tracks):
 
     tracks.dropna(inplace = True)
 
-    tracks = tracks.drop(['id', 'id_artists'], axis = 1)
+    tracks = tracks.drop(['id'], axis = 1)
 
     tracks = tracks.sort_values(by=['popularity'], ascending=False)
     tracks.drop_duplicates(subset=['name'], keep='first', inplace=True)

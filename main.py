@@ -15,7 +15,7 @@ song_vectorizer.fit(tracks['genre'])
 def get_similarities(song_name, data):
 
     # Getting vector for the input song.
-    text_array1 = song_vectorizer.transform(data[data['name']==song_name]['genres']).toarray()
+    text_array1 = song_vectorizer.transform(data[data['name']==song_name]['genre']).toarray()
     num_array1 = data[data['name']==song_name].select_dtypes(include=np.number).to_numpy()
 
     # We will store similarity for each row of the dataset.
@@ -24,7 +24,7 @@ def get_similarities(song_name, data):
         name = row['name']
         
         # Getting vector for current song.
-        text_array2 = song_vectorizer.transform(data[data['name']==name]['genres']).toarray()
+        text_array2 = song_vectorizer.transform(data[data['name']==name]['genre']).toarray()
         num_array2 = data[data['name']==name].select_dtypes(include=np.number).to_numpy()
 
         # Calculating similarities for text as well as numeric features
@@ -52,3 +52,6 @@ def recommend_songs(song_name, data=tracks):
 
     # First song will be the input song itself as the similarity will be highest.
     return data[['name', 'artists']][2:7]
+
+song_name = input("Enter a song of your liking: ")
+print(recommend_songs(song_name,tracks))
