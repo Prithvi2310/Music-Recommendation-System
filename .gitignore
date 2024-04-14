@@ -1,6 +1,10 @@
+/* Environments */
 music
 env
 
+/* Files */
 trial.ipynb
+trial2.ipynb
 
-data/trial.txt
+/*cache*/
+__pycache__

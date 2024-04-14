@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekend Plans Suggestion App</title>
+    <link rel="stylesheet" href="static/index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>MeloMix</h1>
+        <form id = 'search-form' action = "/suggest_songs" method = "post">
+            <label for="input_song">Enter your favourite song:</label>
+            <input type="text" id="input_song" name ="input_song" placeholder="Eg: Shape of you">
+            <div id="suggestions"></div>
+            <button type = "submit" value = "Submit">Get Songs</button>
+        </form>
+    </div>
+    <script src="static/scripts.js"></script>
+</body>
+</html>
