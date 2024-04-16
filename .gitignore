@@ -5,6 +5,7 @@ env
 /* Files */
 trial.ipynb
 trial2.ipynb
+model2.py
 
 /*cache*/
 __pycache__
