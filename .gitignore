@@ -1,2 +1,10 @@
-musicRecommendation
-.DS_Store
+/* Environments */
+music
+env
+
+/* Files */
+trial.ipynb
+trial2.ipynb
+
+/*cache*/
+__pycache__
