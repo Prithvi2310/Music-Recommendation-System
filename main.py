@@ -37,6 +37,7 @@ def get_similarities(song_name, data):
 def recommend_songs(song_name, data=tracks):
     # Base case
     song_list = []
+    new_list = []
 
     if tracks[tracks['name'] == song_name].shape[0] == 0:
         comment = 'This song is either not so popular or you/have entered a song out of our list.\nSome songs you may like:\n'
@@ -59,7 +60,10 @@ def recommend_songs(song_name, data=tracks):
         data_list = data.values.tolist()
 
         for i in data_list:
-            song_list.append(f'Song: {i[0]}, Artist:{i[1]}')
+            new_list.append(f'{i[0]} by {i[1]}')
+        
+        for i in new_list:
+            j = i.replace('[', '').replace(']', '')
+            song_list.append(j)
     
     return(comment, song_list)
-
